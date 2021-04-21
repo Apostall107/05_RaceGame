@@ -21,8 +21,46 @@ namespace RaceGame
         void Enemy(int speed)
         {
 
-            if (enemy) { }
-        
+            if (enemy1.Top >= 500)
+            {
+                enemy1.Top = 0;
+            }
+            else
+            {
+                enemy1.Top += speed;
+            }
+
+
+            if (enemy2.Top >= 500)
+            {
+                enemy2.Top = 0;
+            }
+            else
+            {
+                enemy2.Top += speed;
+            }
+
+
+            if (enemy3.Top >= 500)
+            {
+                enemy3.Top = 0;
+            }
+            else
+            {
+                enemy3.Top += speed;
+            }
+
+
+            if (enemy4.Top >= 500)
+            {
+                enemy4.Top = 0;
+            }
+            else
+            {
+                enemy4.Top += speed;
+            }
+
+
         }
 
 
@@ -30,6 +68,7 @@ namespace RaceGame
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveLine(_GameSpeed);
+            Enemy(5);
         }
 
         void MoveLine(int speed)
