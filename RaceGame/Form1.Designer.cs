@@ -45,6 +45,11 @@ namespace RaceGame
             this.enemy1 = new System.Windows.Forms.PictureBox();
             this.enemy4 = new System.Windows.Forms.PictureBox();
             this.enemy3 = new System.Windows.Forms.PictureBox();
+            this.GameOverLabel = new System.Windows.Forms.Label();
+            this.CoinsLabel = new System.Windows.Forms.Label();
+            this.Coin2 = new System.Windows.Forms.PictureBox();
+            this.Coin1 = new System.Windows.Forms.PictureBox();
+            this.Coin3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -58,6 +63,9 @@ namespace RaceGame
             ((System.ComponentModel.ISupportInitialize)(this.enemy1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Coin2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Coin1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Coin3)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -142,9 +150,9 @@ namespace RaceGame
             // 
             this.MyCar.BackColor = System.Drawing.Color.Transparent;
             this.MyCar.Image = ((System.Drawing.Image)(resources.GetObject("MyCar.Image")));
-            this.MyCar.Location = new System.Drawing.Point(189, 391);
+            this.MyCar.Location = new System.Drawing.Point(189, 386);
             this.MyCar.Name = "MyCar";
-            this.MyCar.Size = new System.Drawing.Size(39, 75);
+            this.MyCar.Size = new System.Drawing.Size(33, 80);
             this.MyCar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MyCar.TabIndex = 1;
             this.MyCar.TabStop = false;
@@ -193,12 +201,74 @@ namespace RaceGame
             this.enemy3.TabIndex = 1;
             this.enemy3.TabStop = false;
             // 
+            // GameOverLabel
+            // 
+            this.GameOverLabel.AutoSize = true;
+            this.GameOverLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.GameOverLabel.CausesValidation = false;
+            this.GameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GameOverLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.GameOverLabel.Location = new System.Drawing.Point(12, 179);
+            this.GameOverLabel.Name = "GameOverLabel";
+            this.GameOverLabel.Size = new System.Drawing.Size(363, 73);
+            this.GameOverLabel.TabIndex = 2;
+            this.GameOverLabel.Text = "Game Over";
+            // 
+            // CoinsLabel
+            // 
+            this.CoinsLabel.AutoSize = true;
+            this.CoinsLabel.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CoinsLabel.ForeColor = System.Drawing.Color.Gold;
+            this.CoinsLabel.Location = new System.Drawing.Point(13, 0);
+            this.CoinsLabel.Name = "CoinsLabel";
+            this.CoinsLabel.Size = new System.Drawing.Size(96, 26);
+            this.CoinsLabel.TabIndex = 3;
+            this.CoinsLabel.Text = "Coins=0";
+            // 
+            // Coin2
+            // 
+            this.Coin2.BackColor = System.Drawing.Color.Transparent;
+            this.Coin2.Image = ((System.Drawing.Image)(resources.GetObject("Coin2.Image")));
+            this.Coin2.Location = new System.Drawing.Point(268, 75);
+            this.Coin2.Name = "Coin2";
+            this.Coin2.Size = new System.Drawing.Size(39, 31);
+            this.Coin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Coin2.TabIndex = 4;
+            this.Coin2.TabStop = false;
+            // 
+            // Coin1
+            // 
+            this.Coin1.BackColor = System.Drawing.Color.Transparent;
+            this.Coin1.Image = ((System.Drawing.Image)(resources.GetObject("Coin1.Image")));
+            this.Coin1.Location = new System.Drawing.Point(47, 75);
+            this.Coin1.Name = "Coin1";
+            this.Coin1.Size = new System.Drawing.Size(39, 31);
+            this.Coin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Coin1.TabIndex = 4;
+            this.Coin1.TabStop = false;
+            // 
+            // Coin3
+            // 
+            this.Coin3.BackColor = System.Drawing.Color.Transparent;
+            this.Coin3.Image = ((System.Drawing.Image)(resources.GetObject("Coin3.Image")));
+            this.Coin3.Location = new System.Drawing.Point(268, 316);
+            this.Coin3.Name = "Coin3";
+            this.Coin3.Size = new System.Drawing.Size(39, 31);
+            this.Coin3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Coin3.TabIndex = 4;
+            this.Coin3.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(384, 465);
+            this.Controls.Add(this.Coin3);
+            this.Controls.Add(this.Coin1);
+            this.Controls.Add(this.Coin2);
+            this.Controls.Add(this.CoinsLabel);
+            this.Controls.Add(this.GameOverLabel);
             this.Controls.Add(this.enemy3);
             this.Controls.Add(this.enemy4);
             this.Controls.Add(this.enemy1);
@@ -228,7 +298,11 @@ namespace RaceGame
             ((System.ComponentModel.ISupportInitialize)(this.enemy1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Coin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Coin1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Coin3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -248,6 +322,11 @@ namespace RaceGame
         private System.Windows.Forms.PictureBox enemy1;
         private System.Windows.Forms.PictureBox enemy4;
         private System.Windows.Forms.PictureBox enemy3;
+        private System.Windows.Forms.Label GameOverLabel;
+        private System.Windows.Forms.Label CoinsLabel;
+        private System.Windows.Forms.PictureBox Coin2;
+        private System.Windows.Forms.PictureBox Coin1;
+        private System.Windows.Forms.PictureBox Coin3;
     }
 }
 

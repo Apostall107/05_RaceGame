@@ -15,15 +15,22 @@ namespace RaceGame
         public Form1()
         {
             InitializeComponent();
+            GameOverLabel.Visible = false;
         }
         int _GameSpeed = 0;
+
+
+        Random rnd = new Random();
+        int x;
 
         void Enemy(int speed)
         {
 
-            if (enemy1.Top >= 500)
+            if (enemy1.Top >= 550)
             {
-                enemy1.Top = 0;
+                x = rnd.Next(10, 180);
+
+                enemy1.Location = new Point(x, 0);
             }
             else
             {
@@ -33,7 +40,9 @@ namespace RaceGame
 
             if (enemy2.Top >= 500)
             {
-                enemy2.Top = 0;
+                x = rnd.Next(10, 180);
+
+                enemy2.Location = new Point(x, 0);
             }
             else
             {
@@ -43,7 +52,9 @@ namespace RaceGame
 
             if (enemy3.Top >= 500)
             {
-                enemy3.Top = 0;
+                x = rnd.Next(200, 350);
+
+                enemy3.Location = new Point(x, 0);
             }
             else
             {
@@ -53,7 +64,9 @@ namespace RaceGame
 
             if (enemy4.Top >= 500)
             {
-                enemy4.Top = 0;
+                x = rnd.Next(200, 350);
+
+                enemy4.Location = new Point(x, 0);
             }
             else
             {
@@ -63,12 +76,59 @@ namespace RaceGame
 
         }
 
+        void Coin(int speed)
+        {
 
+            if (Coin1.Top >= 500)
+            {
+                x = rnd.Next(30, 370);
+
+                Coin1.Location = new Point(x, 0);
+            }
+            else
+            {
+                Coin1.Top += speed;
+            }
+
+
+            if (Coin2.Top >= 500)
+            {
+                x = rnd.Next(30, 370);
+
+                Coin2.Location = new Point(x, 0);
+            }
+            else
+            {
+                Coin2.Top += speed;
+            }
+
+
+
+
+            if (Coin3.Top >= 500)
+            {
+                x = rnd.Next(30, 370);
+
+                Coin3.Location = new Point(x, 0);
+            }
+            else
+            {
+                Coin3.Top += speed;
+            }
+
+
+
+
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveLine(_GameSpeed);
-            Enemy(5);
+            Enemy(_GameSpeed / 2);
+            Coin(_GameSpeed);
+            CoinCollection();
+            GameOver();
+
         }
 
         void MoveLine(int speed)
@@ -105,8 +165,60 @@ namespace RaceGame
             { pictureBox6.Top += speed; }
         }
 
+        int collectedCoins = 0;
+        void CoinCollection()
+        {
 
-        
+
+
+
+            if (MyCar.Bounds.IntersectsWith(Coin1.Bounds))
+            {
+                x = rnd.Next(10, 180);
+                collectedCoins++;
+                CoinsLabel.Text = "Coins=" + collectedCoins.ToString();
+                Coin1.Location = new Point(x, 0);
+            }
+
+
+            if (MyCar.Bounds.IntersectsWith(Coin2.Bounds))
+            {
+                x = rnd.Next(10, 180);
+                collectedCoins++;
+                CoinsLabel.Text = "Coins=" + collectedCoins.ToString();
+                Coin2.Location = new Point(x, 0);
+            }
+
+
+            if (MyCar.Bounds.IntersectsWith(Coin3.Bounds))
+            {
+                x = rnd.Next(10, 180);
+                collectedCoins++;
+                CoinsLabel.Text = "Coins=" + collectedCoins.ToString();
+                Coin3.Location = new Point(x, 0);
+            }
+
+
+
+
+        }
+
+
+        void GameOver()
+        {
+
+            if (MyCar.Bounds.IntersectsWith(enemy1.Bounds) || MyCar.Bounds.IntersectsWith(enemy2.Bounds) || MyCar.Bounds.IntersectsWith(enemy3.Bounds) || MyCar.Bounds.IntersectsWith(enemy4.Bounds))
+            {
+
+                timer1.Enabled = false;
+                GameOverLabel.Visible = true;
+
+
+            }
+
+
+        }
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
@@ -125,8 +237,9 @@ namespace RaceGame
 
             if (e.KeyCode == Keys.Up)
             {
-                if (_GameSpeed < 25)
+                if (_GameSpeed < 26)
                 {
+                    _GameSpeed++;
                     _GameSpeed++;
                 }
             }
@@ -137,8 +250,11 @@ namespace RaceGame
                 if (_GameSpeed > 0)
                 {
                     _GameSpeed--;
+                    _GameSpeed--;
                 }
             }
+
+
 
 
 
